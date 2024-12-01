@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { pageModuleRelatorios } from '../controllers/module-relatorios-controller.js'
 import { isAuth } from '../middlewares/is-auth.js';
-import { hasPermission } from '../middlewares/has-permission.js';
+import { checkPermission } from '../middlewares/check-permission.js';
 
 const router = Router();
 
-router.get('/', isAuth, hasPermission, pageModuleRelatorios);
+router.get('/', isAuth, checkPermission, pageModuleRelatorios);
 
 export default router;

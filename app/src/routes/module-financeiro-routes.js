@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { pageModuleFinancieiro } from '../controllers/module-financeiro-controller.js'
 import { isAuth } from '../middlewares/is-auth.js';
-import { hasPermission } from '../middlewares/has-permission.js';
+import { checkPermission } from '../middlewares/check-permission.js';
 
 const router = Router();
 
-router.get('/', isAuth, hasPermission, pageModuleFinancieiro);
+router.get('/', isAuth, checkPermission, pageModuleFinancieiro);
 
 export default router;
