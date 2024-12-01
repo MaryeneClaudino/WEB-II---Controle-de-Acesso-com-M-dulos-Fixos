@@ -116,26 +116,4 @@ if (user.length <= 0) {
     });
 }
 
-// SALVAR TODAS AS ROTAS QUE O USUARIO ESTA ACESSANDO NA SESSAO
-app.use((req, res, next) => {
-    req.session.routes = req.session.routes ?? [];
-    req.session.routes.push(req.url);
-    next();
-});
-
-// meu MIDDLEWARE
-app.use((req, res, next) => {
-    if (NODE_ENV == 'production') return next();
-    console.log('Middleware');
-    console.log({
-        url: req.url,
-        method: req.method,
-        body: req.body,
-        query: req.query,
-        sessionId: req.sessionID,
-        session: req.session,
-    })
-    next();
-});
-
 app.listen(3000, () => console.log("Server iniciou na porta 3000"));
