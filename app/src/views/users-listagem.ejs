@@ -1,0 +1,84 @@
+<%- include('includes/head') %>
+
+    <body class="bg-gray-100">
+        <header class="bg-blue-600 text-white p-4" style="display: flex; flex-direction: row; justify-content: center;">
+            <h1 class="text-center text-3xl font-semibold">Listagem de Usuários</h1>
+            <a href="/auth/logout"><button
+                    style="position: absolute; right: 0; margin-right: 30px;font-weight: bold; font-size: large;">Sair</button></a>
+        </header>
+
+        <div class="bg-white shadow-md rounded my-6"
+            style="width: 80%; margin: auto; margin-top: 30px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 30px; padding: 10px; border-radius: 10px;font-size: large;">
+            <div onclick="window.location.href='/perfil'"
+                style="cursor: pointer; display: flex;flex-direction: row; align-items: center;  gap: 5px;">Módulo de
+                Perfil -
+                <ion-icon style="font-size: xx-large; color: #2563eb;" name="person"></ion-icon>
+            </div>
+            <div onclick="window.location.href='/gestaoUsuario'"
+                style="cursor: pointer; display: flex;flex-direction: row; align-items: center; gap: 5px;">Gestão de
+                Usuários -
+                <ion-icon style="font-size: xx-large; color: #5a25eb;" name="people-circle"></ion-icon>
+            </div>
+            <div onclick="window.location.href='/financeiro'"
+                style="cursor: pointer; display: flex;flex-direction: row; align-items: center;  gap: 5px;">
+                Módulo Financeiro -
+                <ion-icon style="font-size: xx-large; color: #116611;" name="cash"></ion-icon>
+            </div>
+            <div onclick="window.location.href='/relatorios'"
+                style="cursor: pointer;display: flex;flex-direction: row; align-items: center;  gap: 5px;">Módulo
+                de Relatórios -
+                <ion-icon style="font-size: xx-large; color: #f5c219;" name="documents"></ion-icon>
+            </div>
+            <div onclick="window.location.href='/produtos'"
+                style="cursor: pointer;display: flex;flex-direction: row; align-items: center;  gap: 5px;">Módulo de
+                Produtos -
+                <ion-icon style="font-size: xx-large; color: #a34f00;" name="storefront"></ion-icon>
+            </div>
+        </div>
+
+        <div class="container mx-auto mt-8">
+            <% for (let i=0; i < data.users.length; i++) { %>
+                <div class="bg-white shadow-md rounded my-6"
+                    style="display: flex; flex-direction: row; align-items: center; gap: 30px; padding: 10px; border-radius: 10px;">
+                    <img src="/<%= data.users[i].imageId %>" alt="Imagem do usuários" style="width:100px">
+                    <div style="font-size:larger;">
+                        <strong>Nome:</strong>
+                        <%= data.users[i].name %>
+                    </div>
+                    <div style="font-size:larger;">
+                        <strong>Email:</strong>
+                        <%= data.users[i].email %>
+                    </div>
+                    <div style="font-size:larger;">
+                        <strong>Role:</strong>
+                        <%= data.users[i].role %>
+                    </div>
+                    <div style="font-size:larger; display: flex; flex-direction: row; align-items: center; gap: 20px;">
+                        <strong>Módulos liberados:</strong>
+                        <ion-icon style="cursor: pointer; font-size: xx-large; color: #2563eb;" name="person"
+                            onclick="window.location.href='/perfil'"></ion-icon>
+                        <% for (let j=0; j < data.users[i].permissions.length; j++) {
+                            if(data.users[i].role=='SuperUsuário' || data.users[i].role=='Administrador' ){%>
+                            <ion-icon style="cursor: pointer; font-size: xx-large; color: #5a25eb;" name="people-circle"
+                                onclick="window.location.href='/gestaoUsuario'"></ion-icon>
+                            <% } if(data.users[i].permissions[j].module.name=='financeiro'
+                                ||data.users[i].permissions[j].module.name=='todos' ){%>
+                                <ion-icon style="cursor: pointer; font-size: xx-large; color: #116611;" name="cash"
+                                    onclick="window.location.href='/financeiro'"></ion-icon>
+                                <% } if(data.users[i].permissions[j].module.name=='relatorios'
+                                    ||data.users[i].permissions[j].module.name=='todos' ){ %>
+                                    <ion-icon style="cursor: pointer;font-size: xx-large; color: #f5c219;"
+                                        name="documents" onclick="window.location.href='/relatorios'"></ion-icon>
+                                    <% } if(data.users[i].permissions[j].module.name=='produtos'
+                                        ||data.users[i].permissions[j].module.name=='todos' ){%>
+                                        <ion-icon style="cursor: pointer;font-size: xx-large; color: #a34f00;"
+                                            name="storefront" onclick="window.location.href='/produtos'"></ion-icon>
+                                        <% } } %>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+
+    </body>
+
+    </html>

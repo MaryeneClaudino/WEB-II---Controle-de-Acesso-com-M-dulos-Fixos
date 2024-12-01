@@ -1,0 +1,25 @@
+<%- include('includes/head') %>
+
+    <body class="flex items-center justify-center min-h-screen">
+        <div class="w-full max-w-md p-6 rounded-lg shadow-lg" style="background-color: #001d61;">
+            <h2 class="text-3xl font-bold mb-6 text-center text-white">Login</h2>
+            <form action="/auth/login" method="post">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-white">Email</label>
+                    <input id="email" type="text" name="email"
+                        class="mt-1 w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;" required>
+                </div>
+                <div class=" mb-4">
+                    <label for="password" class="block text-sm font-medium text-white">Password</label>
+                    <input id="password" type="password" name="password"
+                        class="mt-1 w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;" required>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded mt-4">Entrar</button>
+            </form>
+        </div>
+    </body>
+
+    </html>

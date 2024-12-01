@@ -1,0 +1,57 @@
+<%- include('includes/head') %>
+
+    <body>
+        <header class="bg-blue-600 text-white p-4">
+            <h1 class="text-center text-3xl font-semibold">
+                <%= data.title %>
+            </h1>
+        </header>
+
+        <div style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; margin: 20px;">
+            <button onclick="window.location.href='/gestaoUsuario'"
+                style="color: white; width: 10%; cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: center ;gap: 5px; background-color: #2563eb; padding: 2px; border-radius: 10px;">
+                <ion-icon style="font-size: large;" name="arrow-back-circle"></ion-icon>
+                <div>Voltar</div>
+            </button><br>
+        </div>
+
+        <div
+            style="padding: 10px;display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60%; margin: auto;">
+            <form action="/gestaoUsuario/add" method="post" style="display: flex; gap:3px; flex-direction: column;">
+
+                <div class="mb-4">
+                    <label class="font-semibold" style="font-size: larger;" for="name">Nome</label><br>
+                    <input class="mt-1 w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;" type="text" name="name" required><br>
+                </div>
+                <div class="mb-4">
+                    <label class="font-semibold" style="font-size: larger;" for="role">Tipo de usuário</label><br>
+                    <select class="mt-1 w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;" style="padding: 5px;" name="role" required>
+                        <option value="Usuário">Usuário</option>
+                        <% if(data.role=='SuperUsuário' ){%>
+                            <option value="Administrador">Administrador</option>
+                            <% }%>
+                    </select><br>
+                </div>
+
+                <div class="mb-4">
+                    <label class="font-semibold" style="font-size: larger;" for="email">Email</label><br>
+                    <input class="mt-1 w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;" type="email" name="email" required><br>
+                </div>
+
+                <div class="mb-4">
+                    <label class="font-semibold" style="font-size: larger;" for="password">Password</label><br>
+                    <input class="mt-1 w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;" type="password" name="password" required><br>
+                </div>
+
+                <button
+                    style="color: white; padding: 5px; text-align: center; background-color: #2563eb; margin: 10px; border-radius: 10px;"
+                    type="submit">Cadastrar</button>
+            </form>
+
+    </body>
+
+    </html>

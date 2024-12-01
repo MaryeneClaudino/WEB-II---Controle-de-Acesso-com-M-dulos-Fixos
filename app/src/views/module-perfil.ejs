@@ -1,0 +1,45 @@
+<%- include('includes/head') %>
+
+    <body class="bg-gray-100 text-gray-800 font-sans">
+        <header class="bg-blue-600 text-white p-4">
+            <h1 class="text-center text-3xl font-semibold">Módulo de Perfil</h1>
+        </header>
+
+        <div style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; margin: 20px;">
+            <button onclick="window.location.href='/users'"
+                style="color: white; width: 10%; cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: center ;gap: 5px; background-color: #2563eb; padding: 2px; border-radius: 10px;">
+                <ion-icon style="font-size: large;" name="arrow-back-circle"></ion-icon>
+                <div>Voltar</div>
+            </button><br>
+        </div>
+
+        <div class="max-w-4xl mx-auto p-6">
+            <div class="text-center my-8"
+                style="display: flex; flex-direction: column; align-items: center;justify-content: center; gap: 20px;">
+                <img src="/<%= user.imageId %>" alt="Imagem do usuários" style="width:100px">
+                <h1 class="text-3xl font-bold">
+                    Nome: <%= user.name %>
+                </h1>
+                <h1 class="text-3xl font-bold">
+                    Email: <%= user.email %>
+                </h1>
+            </div>
+            <div class="text-center my-8">
+                <h1 class="text-3xl font-bold" style="margin: 10px;">
+                    Trocar Foto
+                </h1>
+
+                <form action="/perfil" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file"
+                        class="px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style="background-color: #e3ecff;">
+                    <button type="submit"
+                        style="color: white; padding: 5px; text-align: center; background-color: #2563eb; margin: 10px; border-radius: 10px;">Enviar</button>
+                </form>
+
+            </div>
+
+        </div>
+    </body>
+
+    </html>
